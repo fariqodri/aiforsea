@@ -1,4 +1,5 @@
 from .detection import Detection
+from .preprocessing import kalman_filter
 
 
 class DrivingEventDetection(Detection):
