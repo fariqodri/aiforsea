@@ -1,3 +1,5 @@
 env
 safety
 .ipynb_checkpoints
+__pycache__
+.vscode
