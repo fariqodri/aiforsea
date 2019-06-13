@@ -37,7 +37,7 @@ There are 3 main scripts in this project.
 
 - [predict](predict.py) script
 
-    In order to run the predict script, **make sure that the models are available in models folder**. 
+    In order to run the predict script, **make sure that the models are available in models folder. If there are no models available in models folder, you need to run the [train script](train.py) first.**. 
     
     If the models are already available, you can the run the script by:
     ```
@@ -50,7 +50,7 @@ There are 3 main scripts in this project.
     python predict.py test_part_1.csv test_part_2.csv test_part_3.csv
     ```
 
-    **However, if there are no models available in models folder, you need to run the [train script](train.py) first.**
+    <small>I already provided [test.csv](test.csv) if you want to try this script immediately.</small>
 
 - [train](train.py) script
 
@@ -63,7 +63,7 @@ There are 3 main scripts in this project.
 
 - [score](score.py) script
 
-    In order to run the score script, **make sure that the models are available in models folder**. 
+    In order to run the score script, **make sure that the models are available in models folder. If there are no models available in models folder, you need to run the [train script](train.py) first.**. 
     
     If the models are already available, you can the run the script by:
     ```
@@ -76,5 +76,3 @@ There are 3 main scripts in this project.
     ```
     python predict.py test_part_1.csv test_part_2.csv test_part_3.csv label.csv
     ```
-
-    **However, if there are no models available in models folder, you need to run the [train script](train.py) first.**
