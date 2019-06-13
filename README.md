@@ -5,11 +5,11 @@
 This environment has only been tested in Python 3, so I highly recommend you to use Python 3 to run these scripts. I also highly recommend you to use virtual environment to run these scripts. You can create a virtual environment with this command:
 
 ```
-$ python3 -m venv env
+python3 -m venv env
 ```
 or 
 ```
-$ python -m venv env
+python -m venv env
 ```
 
 Then you can use that virtual environment with this command:
