@@ -13,7 +13,7 @@ def load_features_group(features_paths):
 
 def load_label_df(label_path):
     label = pd.read_csv(label_path, dtype={
-                        **dtypes_dict, 'label': 'category'}).drop_duplicates(subset="bookingID")
+                        **dtypes_dict}).drop_duplicates(subset="bookingID")
     return label
 
 

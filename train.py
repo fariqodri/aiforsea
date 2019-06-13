@@ -1,7 +1,3 @@
-import warnings
-warnings.filterwarnings("ignore")
-
-from imblearn.over_sampling import SMOTE
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.cluster import KMeans
 from sklearn.model_selection import train_test_split
@@ -48,12 +44,6 @@ def train_k_means(features_group):
     return km
 
 
-def upsample(x, y, ratio):
-    sm = SMOTE(random_state=42, ratio=ratio)
-    x, y = sm.fit_sample(x, y)
-    return x, y
-
-
 def train_random_forest(features_group, label_df, k_means_model):
     danger_driving = DangerousDrivingDetection(features_group)
 
@@ -67,7 +57,6 @@ def train_random_forest(features_group, label_df, k_means_model):
     danger_driving.drop_column("bookingID")
 
     x, y = danger_driving.split_feature_and_label("label")
-    x, y = upsample(x, y, 1.0)
     mms = MinMaxScaler()
     x = mms.fit_transform(x)
 

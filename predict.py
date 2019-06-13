@@ -28,4 +28,8 @@ def predict(feature_files):
 if __name__ == "__main__":
     feature_files = sys.argv[1:]
     print()
-    print(predict(feature_files).to_string(index=False))
+    result = predict(feature_files)
+    print(result.to_string(index=False))
+    print()
+    print("The prediction result is also saved in this script directory as result.csv")
+    result.to_csv("result.csv", index=False)

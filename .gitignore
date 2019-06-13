@@ -3,3 +3,4 @@ safety
 .ipynb_checkpoints
 __pycache__
 .vscode
+result.csv
