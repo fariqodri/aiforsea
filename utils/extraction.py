@@ -2,6 +2,9 @@ from sklearn.preprocessing import StandardScaler
 import numpy as np
 import pandas as pd
 
+from config.constants import *
+
+
 def get_variance_of_window(dataframe, column, window_size):
     return dataframe[column].rolling(window_size).var()
 
