@@ -47,7 +47,7 @@ def train_k_means(features_group):
 def train_random_forest(features_group, label_df, k_means_model):
     danger_driving = DangerousDrivingDetection(features_group)
 
-    print(" " * 3, "Counting Events and Speeding per Trip")
+    print(" " * 3, "Counting Events per Trip")
     classification_features = danger_driving.load_classification_features(
         k_means_model)
     print(" " * 3, "Done")
@@ -62,7 +62,8 @@ def train_random_forest(features_group, label_df, k_means_model):
     x_train = mms.fit_transform(x_train)
     x_test = mms.fit_transform(x_test)
 
-    rf = RandomForestClassifier(max_depth=6, n_estimators=100, random_state=42, max_features='sqrt')
+    rf = RandomForestClassifier(random_state=42, max_features='sqrt',bootstrap=True, 
+                            criterion='gini', max_depth=5, n_estimators=800)
     rf.fit(x_train, y_train)
     print(" " * 3, "Random Forest Classifier Score:", rf.score(x_test, y_test))
     return rf
