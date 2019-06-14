@@ -50,8 +50,6 @@ There are 3 main scripts in this project.
     python predict.py test_part_1.csv test_part_2.csv test_part_3.csv
     ```
 
-    <small>I already provided [test.csv](test.csv) if you want to try this script immediately.</small>
-
 - [train](train.py) script
 
     You can use this command to train and save the machine learning models. Use this command to run the script:
