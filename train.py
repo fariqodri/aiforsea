@@ -57,11 +57,14 @@ def train_random_forest(features_group, label_df, k_means_model):
     danger_driving.drop_column("bookingID")
 
     x, y = danger_driving.split_feature_and_label("label")
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=42)
     mms = MinMaxScaler()
-    x = mms.fit_transform(x)
+    x_train = mms.fit_transform(x_train)
+    x_test = mms.fit_transform(x_test)
 
-    rf = RandomForestClassifier(max_depth=2, n_estimators=100, random_state=42)
-    rf.fit(x, y)
+    rf = RandomForestClassifier(max_depth=6, n_estimators=100, random_state=42, max_features='sqrt')
+    rf.fit(x_train, y_train)
+    print(" " * 3, "Random Forest Classifier Score:", rf.score(x_test, y_test))
     return rf
 
 

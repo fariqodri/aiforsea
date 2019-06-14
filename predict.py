@@ -5,6 +5,7 @@ from utils.dangerous_driving import DangerousDrivingDetection
 from utils.load import load_features_group, load_model
 from config.constants import *
 
+from sklearn.preprocessing import MinMaxScaler
 
 def predict(feature_files):
     rf = load_model('models/random_forest_classifier.joblib')
@@ -15,13 +16,16 @@ def predict(feature_files):
 
     classification_features = dangerous_driving.load_classification_features(
         k_means=km)
-
     dangerous_driving.set_data(classification_features)
     bookingIds = dangerous_driving.data['bookingID']
     dangerous_driving.drop_column("bookingID")
 
+    mms = MinMaxScaler()
+    dangerous_driving.scale_data(mms)
     y_pred = rf.predict(dangerous_driving.data)
-    res = {'bookingID': bookingIds.values, 'prediction': y_pred}
+    y_probs = rf.predict_proba(dangerous_driving.data)
+    res = {'bookingID': bookingIds.values, 'prediction': y_pred, 
+        'positive_prediction_probability': y_probs[:, 1]}
     return pd.DataFrame.from_dict(res)
 
 

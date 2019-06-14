@@ -4,3 +4,4 @@ safety
 __pycache__
 .vscode
 result.csv
+test_datasets
